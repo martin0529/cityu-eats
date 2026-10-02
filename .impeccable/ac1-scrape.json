@@ -1,0 +1,733 @@
+{
+ "cats": [
+  "中式早點",
+  "開學優惠",
+  "肉燥拌麵",
+  "台式湯麵",
+  "酸辣米線",
+  "泰惹味精選",
+  "泰式湯粉",
+  "明爐燒味",
+  "燒味推介",
+  "燒味精選",
+  "丼",
+  "日式咖喱",
+  "日式湯烏冬",
+  "城堡炸雞",
+  "披薩",
+  "特價燒味飯",
+  "豬扒包餐",
+  "雞髀餐",
+  "街頭碗仔羹",
+  "西多士",
+  "Coffee Lounge",
+  "單售食品",
+  "特色飲品",
+  "飲品",
+  "其他"
+ ],
+ "items": [
+  {
+   "cat": "中式早點",
+   "img": null,
+   "name": "煎蛋 ‧ 豉油皇菇絲炒麵",
+   "price": "19.5"
+  },
+  {
+   "cat": "中式早點",
+   "img": null,
+   "name": "豉油皇菇絲炒麵",
+   "price": "12.5"
+  },
+  {
+   "cat": "開學優惠",
+   "img": "https://content.aigens.com/image/LaYNNubAmmVD32oCXsaCHNI5-KW_0Q8WrajWz4j8JnI=w400.jpg",
+   "name": "香辣肉丁麻婆豆腐飯 ‧ 金桔鹹檸七喜",
+   "price": "36"
+  },
+  {
+   "cat": "開學優惠",
+   "img": "https://content.aigens.com/image/LaYNNubAmmVD32oCXsaCHNI5-KW_0Q8WrajWz4j8JnI=w400.jpg",
+   "name": "香辣肉丁麻婆豆腐飯 ‧ 熱飲 ‧ 轉凍飲品+$1.5",
+   "price": "36"
+  },
+  {
+   "cat": "肉燥拌麵",
+   "img": null,
+   "name": "菜脯肉燥拌麵．蝦皮湯",
+   "price": "34"
+  },
+  {
+   "cat": "肉燥拌麵",
+   "img": null,
+   "name": "香辣菜脯肉燥拌麵",
+   "price": "31"
+  },
+  {
+   "cat": "台式湯麵",
+   "img": null,
+   "name": "台式麻辣牛肉麵",
+   "price": "43"
+  },
+  {
+   "cat": "台式湯麵",
+   "img": null,
+   "name": "台式牛肉麵",
+   "price": "40.9"
+  },
+  {
+   "cat": "酸辣米線",
+   "img": null,
+   "name": "酸辣米線",
+   "price": "22.5"
+  },
+  {
+   "cat": "酸辣米線",
+   "img": null,
+   "name": "清湯米線",
+   "price": "20.5"
+  },
+  {
+   "cat": "泰惹味精選",
+   "img": null,
+   "name": "泰式水門雞飯 ‧ 例湯",
+   "price": "49.1"
+  },
+  {
+   "cat": "泰惹味精選",
+   "img": null,
+   "name": "香茅雞髀．油飯",
+   "price": "38.9"
+  },
+  {
+   "cat": "泰式湯粉",
+   "img": "https://content.aigens.com/image/_52LW_AtzeVmXl0J6W4YKKPwD-RA1dXCRg9RYjOeRD8=w512.jpg",
+   "name": "鴨腿湯河粉",
+   "price": "39"
+  },
+  {
+   "cat": "泰式湯粉",
+   "img": null,
+   "name": "牛肉雙拼湯粉",
+   "price": "39.9"
+  },
+  {
+   "cat": "泰式湯粉",
+   "img": null,
+   "name": "熟牛肉湯河",
+   "price": "35.8"
+  },
+  {
+   "cat": "泰式湯粉",
+   "img": null,
+   "name": "魚蛋湯粉",
+   "price": "29.7"
+  },
+  {
+   "cat": "明爐燒味",
+   "img": null,
+   "name": "鹹蛋三寶飯",
+   "price": "32.7"
+  },
+  {
+   "cat": "明爐燒味",
+   "img": null,
+   "name": "燒味雙拼飯",
+   "price": "28.6"
+  },
+  {
+   "cat": "明爐燒味",
+   "img": null,
+   "name": "燒味單拼飯",
+   "price": "22"
+  },
+  {
+   "cat": "燒味推介",
+   "img": null,
+   "name": "麻辣肉丁 ‧ 豉油雞飯",
+   "price": "44"
+  },
+  {
+   "cat": "燒味推介",
+   "img": null,
+   "name": "麻辣肉丁 ‧ 明爐燒鴨飯",
+   "price": "44"
+  },
+  {
+   "cat": "燒味推介",
+   "img": null,
+   "name": "麻辣肉丁 ‧ 蜜汁叉燒飯",
+   "price": "44"
+  },
+  {
+   "cat": "燒味推介",
+   "img": null,
+   "name": "麻辣肉丁．燒髀飯",
+   "price": "44"
+  },
+  {
+   "cat": "燒味精選",
+   "img": null,
+   "name": "口水雞 ‧ 白飯",
+   "price": "40.9"
+  },
+  {
+   "cat": "丼",
+   "img": null,
+   "name": "汁煮豚肉 ‧ 溫泉玉子丼",
+   "price": "49.1"
+  },
+  {
+   "cat": "丼",
+   "img": null,
+   "name": "辣味牛肉 ‧ 溫泉玉子丼",
+   "price": "49.1"
+  },
+  {
+   "cat": "丼",
+   "img": null,
+   "name": "汁煮豚肉 ‧ 泡菜丼",
+   "price": "49.1"
+  },
+  {
+   "cat": "丼",
+   "img": null,
+   "name": "洋蔥牛肉丼",
+   "price": "49.1"
+  },
+  {
+   "cat": "丼",
+   "img": null,
+   "name": "照燒雞扒飯",
+   "price": "46"
+  },
+  {
+   "cat": "日式咖喱",
+   "img": null,
+   "name": "咖喱唐揚雞飯",
+   "price": "51.2"
+  },
+  {
+   "cat": "日式湯烏冬",
+   "img": null,
+   "name": "牛肉湯烏冬",
+   "price": "49.1"
+  },
+  {
+   "cat": "日式湯烏冬",
+   "img": null,
+   "name": "照燒雞扒烏冬",
+   "price": "46"
+  },
+  {
+   "cat": "城堡炸雞",
+   "img": null,
+   "name": "炸雞 配 黑椒磨菇飯 ‧ 粟米",
+   "price": "45"
+  },
+  {
+   "cat": "城堡炸雞",
+   "img": null,
+   "name": "炸雞 配 黑椒磨菇飯",
+   "price": "36.8"
+  },
+  {
+   "cat": "城堡炸雞",
+   "img": null,
+   "name": "炸雞 ‧ 牛油粟米",
+   "price": "36.8"
+  },
+  {
+   "cat": "城堡炸雞",
+   "img": null,
+   "name": "炸雞 (2件)",
+   "price": "28.6"
+  },
+  {
+   "cat": "披薩",
+   "img": null,
+   "name": "辣肉腸披薩(需時製作15-20分鐘)",
+   "price": "49.1"
+  },
+  {
+   "cat": "披薩",
+   "img": null,
+   "name": "夏威夷菠蘿火腿芝士披薩(需時製作15-20分鐘)",
+   "price": "49.1"
+  },
+  {
+   "cat": "特價燒味飯",
+   "img": null,
+   "name": "扎肉．肉燥飯",
+   "price": "39"
+  },
+  {
+   "cat": "特價燒味飯",
+   "img": null,
+   "name": "泰式魚餅．肉燥飯",
+   "price": "39"
+  },
+  {
+   "cat": "特價燒味飯",
+   "img": null,
+   "name": "雞中翼．肉燥飯",
+   "price": "39"
+  },
+  {
+   "cat": "豬扒包餐",
+   "img": null,
+   "name": "芥末吉列豬扒包 ‧ 薯條(製作需時約 10- 15分鐘)",
+   "price": "36.8"
+  },
+  {
+   "cat": "豬扒包餐",
+   "img": null,
+   "name": "洋蔥豬扒包 ‧ 薯條(製作需時約 10- 15分鐘)",
+   "price": "35.8"
+  },
+  {
+   "cat": "豬扒包餐",
+   "img": "https://lh3.googleusercontent.com/VqOhTOtzLDbYh7jlx8z89Tf0xrRVXwetOBJwGLGop1lIfvuPcc09stwKk_nQajAQPHPm2pEtMEQDYanSp-lpSiZyDcAjk5a2pqs4pq9J=w500-rw",
+   "name": "芥末吉列豬扒包(製作需時約 10- 15分鐘)",
+   "price": "30.7"
+  },
+  {
+   "cat": "豬扒包餐",
+   "img": "https://lh3.googleusercontent.com/2t3vYCNFgwiuCm0oKJ9WFpSsk_AIfmDOf4KJ7slnsZ1LlVNYnSzXZSqm4iRAsfZ6u4NZ5NweIol1dKIa2BHxlFE5J3EVkSc5S2B8JBCi=w500-rw",
+   "name": "洋蔥豬扒包(製作需時約 10- 15分鐘)",
+   "price": "29.7"
+  },
+  {
+   "cat": "豬扒包餐",
+   "img": null,
+   "name": "奶油脆脆豬仔包 ‧ 薯條(製作需時約 10- 15分鐘)",
+   "price": "28.6"
+  },
+  {
+   "cat": "豬扒包餐",
+   "img": null,
+   "name": "奶醬脆脆豬仔包 ‧ 薯條(製作需時約 10- 15分鐘)",
+   "price": "28.6"
+  },
+  {
+   "cat": "雞髀餐",
+   "img": null,
+   "name": "炸雞髀 ‧ 薯條 ‧ 魚蛋",
+   "price": "34"
+  },
+  {
+   "cat": "雞髀餐",
+   "img": null,
+   "name": "炸雞髀 ‧ 粟米條 ‧ 魚蛋",
+   "price": "34"
+  },
+  {
+   "cat": "雞髀餐",
+   "img": null,
+   "name": "炸雞髀 ‧ 粟米條 ‧ 燒賣",
+   "price": "34"
+  },
+  {
+   "cat": "雞髀餐",
+   "img": null,
+   "name": "炸雞髀 ‧ 薯條",
+   "price": "28.6"
+  },
+  {
+   "cat": "雞髀餐",
+   "img": null,
+   "name": "炸雞髀 ‧ 粟米條",
+   "price": "28.6"
+  },
+  {
+   "cat": "雞髀餐",
+   "img": null,
+   "name": "油雞髀 ‧ 薯條",
+   "price": "28.6"
+  },
+  {
+   "cat": "雞髀餐",
+   "img": null,
+   "name": "油雞髀 ‧ 薯條 ‧ 魚蛋",
+   "price": "34"
+  },
+  {
+   "cat": "雞髀餐",
+   "img": null,
+   "name": "油雞髀 ‧ 粟米條 ‧ 燒賣",
+   "price": "34"
+  },
+  {
+   "cat": "雞髀餐",
+   "img": null,
+   "name": "油雞髀 ‧ 粟米條",
+   "price": "28.6"
+  },
+  {
+   "cat": "街頭碗仔羹",
+   "img": null,
+   "name": "碗仔羹 ‧ 雞翼 ‧ 魚肉燒賣",
+   "price": "32.7"
+  },
+  {
+   "cat": "街頭碗仔羹",
+   "img": null,
+   "name": "碗仔羹 ‧ 雞翼 ‧ 咖喱魚蛋",
+   "price": "32.7"
+  },
+  {
+   "cat": "街頭碗仔羹",
+   "img": null,
+   "name": "碗仔羹 ‧ 雞翼 ‧ 薯條",
+   "price": "32.7"
+  },
+  {
+   "cat": "街頭碗仔羹",
+   "img": null,
+   "name": "碗仔羹 ‧ 雞翼 ‧ 粟米條",
+   "price": "32.7"
+  },
+  {
+   "cat": "西多士",
+   "img": null,
+   "name": "西多士",
+   "price": "24.6"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/bcMZ2Z3dJgxkHhpEviHICp2D142PcV3TmghhqEfHP1zr6Fjidx1-cqTa3y4giszj_ynfFmPBWQ4Ifq337B20y5RK-Rzw7QZto-279_A=w500-rw",
+   "name": "大凍雲呢拿鮮奶咖啡(16oz)",
+   "price": "33.8"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/7oibOyz3pWe931GYieYbTqX-D3ffwyBCUv5lzbtL9LLVkid62vqi09twV9qZV80BRHZHySO8oVfsjC-igdfg5x_zKIe2AjXAOJ0XN8ES=w500-rw",
+   "name": "大凍榛子鮮奶咖啡(16oz)",
+   "price": "33.8"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/045OLEDivSK8YEFmUAWanVW_--QSHpbKQzv0Aeia6A8huZfiXOKfK-Abl-49LGYywNbbQs4llp5E0zp79LMR_7M9C-zPmUViCTwM61L_=w500-rw",
+   "name": "大凍焦糖鮮奶咖啡(16oz)",
+   "price": "33.8"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/fOLN6l5a17sIgPNNe-N3EYqGlejH_Psh5Y82ES3M9tqTXMTnhO-8sD50DmLVWJrnPREc1mjmUzkzbzzcRnDlWIUpJ0aeEuwmQf-IOfM=w500-rw",
+   "name": "大凍朱古力咖啡(16oz)",
+   "price": "32.7"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/zlxw3p5of-AVG0fQhjoXYKckOqRux6Qfr-a-uXLmGYm6DHDVbuBQGE4IiNS0Vn3YskKPOrOmrBOv32OFC5yjihbGS9tUg2i2Pyws-rKcXg=w500-rw",
+   "name": "大凍泡沫咖啡(16oz)",
+   "price": "30.7"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/045OLEDivSK8YEFmUAWanVW_--QSHpbKQzv0Aeia6A8huZfiXOKfK-Abl-49LGYywNbbQs4llp5E0zp79LMR_7M9C-zPmUViCTwM61L_=w500-rw",
+   "name": "大凍鮮奶咖啡(16oz)",
+   "price": "30.7"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/bcMZ2Z3dJgxkHhpEviHICp2D142PcV3TmghhqEfHP1zr6Fjidx1-cqTa3y4giszj_ynfFmPBWQ4Ifq337B20y5RK-Rzw7QZto-279_A=w500-rw",
+   "name": "凍雲呢拿鮮奶咖啡(12oz)*",
+   "price": "30.7"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/7oibOyz3pWe931GYieYbTqX-D3ffwyBCUv5lzbtL9LLVkid62vqi09twV9qZV80BRHZHySO8oVfsjC-igdfg5x_zKIe2AjXAOJ0XN8ES=w500-rw",
+   "name": "凍榛子鮮奶咖啡(12oz)*",
+   "price": "30.7"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/fOLN6l5a17sIgPNNe-N3EYqGlejH_Psh5Y82ES3M9tqTXMTnhO-8sD50DmLVWJrnPREc1mjmUzkzbzzcRnDlWIUpJ0aeEuwmQf-IOfM=w500-rw",
+   "name": "凍朱古力咖啡(12oz)*",
+   "price": "30.2"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/045OLEDivSK8YEFmUAWanVW_--QSHpbKQzv0Aeia6A8huZfiXOKfK-Abl-49LGYywNbbQs4llp5E0zp79LMR_7M9C-zPmUViCTwM61L_=w500-rw",
+   "name": "凍焦糖鮮奶咖啡(12oz)*",
+   "price": "30.7"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/lOjWoUBP4AwVv--84Q-Ma6DHEC-whAJDMWUJPuRpXrNA5EDzWdsY6w-wsXp0_13S2sFQNXxqrvPsn3z2TkAVUZW35pjdhOKYhLfrh7WOQA=w500-rw",
+   "name": "大凍美式咖啡(16oz)",
+   "price": "28.1"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/zlxw3p5of-AVG0fQhjoXYKckOqRux6Qfr-a-uXLmGYm6DHDVbuBQGE4IiNS0Vn3YskKPOrOmrBOv32OFC5yjihbGS9tUg2i2Pyws-rKcXg=w500-rw",
+   "name": "凍泡沫咖啡(12oz)",
+   "price": "28.1"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/045OLEDivSK8YEFmUAWanVW_--QSHpbKQzv0Aeia6A8huZfiXOKfK-Abl-49LGYywNbbQs4llp5E0zp79LMR_7M9C-zPmUViCTwM61L_=w500-rw",
+   "name": "凍鮮奶咖啡 (12oz)*",
+   "price": "28.1"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/fWyDP9OBKZIKDYUXxDwSXMNOC97gJGw1Yzt2fB82k00pc-dxazIjMTTA8czK9S6PyfUQFLm1leBp6uacd1768Evjay0i96RUv-3VnjPb=w500-rw",
+   "name": "大熱鮮奶咖啡(12oz)",
+   "price": "28.1"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/lOjWoUBP4AwVv--84Q-Ma6DHEC-whAJDMWUJPuRpXrNA5EDzWdsY6w-wsXp0_13S2sFQNXxqrvPsn3z2TkAVUZW35pjdhOKYhLfrh7WOQA=w500-rw",
+   "name": "凍美式咖啡(12oz)*",
+   "price": "25.1"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/V0hiOKuXFjzcTmTLC3p-b6YQPyG1AVQnIliS_OSarR5dUNC10wjr0RdaRNSG37zd7GjA7QSUdsSWqgWjCgI6i3jUU0gbXLFFuJzTLXAQ=w500-rw",
+   "name": "大泡沫咖啡(12oz)*",
+   "price": "28.1"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/tgk_FYzjWo39MmyJFJuahj3gQEFy4QOVBJWB7u19RijWK5Bvzxk-thW9AinCb6V5mQQV9mzKTLMTdv8ORsWBYvzdi-6KYE2-qc6ORdYm=w500-rw",
+   "name": "大熱焦糖鮮奶咖啡(12oz)",
+   "price": "30.7"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/VTsooC_zgs-YJ1Cu6UbXYIeEOVnpN9HZ3OCacQq3bHLlzM-3Gf-qSr2kN27dg6Vy-VWEXOo1bK7JQU21iN2z4JzWpoeSoKOjFH2d0PWa=w500-rw",
+   "name": "大熱榛子鮮奶咖啡(12oz)",
+   "price": "30.7"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/9QXFWOIfb0wVYkrG7xUpYc3IZrPdLxDakiIACuFWm_MQV_91H_lkv2qcnDdXY0mRSI1lFzUPb0b8qa0U1qbC_3-TG_8fm1SQ2DiqJE0=w500-rw",
+   "name": "大熱朱古力咖啡(12oz)",
+   "price": "30.2"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/tgk_FYzjWo39MmyJFJuahj3gQEFy4QOVBJWB7u19RijWK5Bvzxk-thW9AinCb6V5mQQV9mzKTLMTdv8ORsWBYvzdi-6KYE2-qc6ORdYm=w500-rw",
+   "name": "大熱雲呢拿鮮奶咖啡(12oz)",
+   "price": "30.7"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/v72GrQVY_hOibI6IuNAnYqbin7XzrDT2u5wKCHskHq4iE1H8bXM-coEUZ2ub-SlZ2ByQjHeNwNYYx7VQmAJ6xd0z9wWuAGZS-JCdbqA=w500-rw",
+   "name": "大熱美式咖啡((12oz)",
+   "price": "25.1"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": null,
+   "name": "熱朱古力奶(12oz)",
+   "price": "18.5"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/V0hiOKuXFjzcTmTLC3p-b6YQPyG1AVQnIliS_OSarR5dUNC10wjr0RdaRNSG37zd7GjA7QSUdsSWqgWjCgI6i3jUU0gbXLFFuJzTLXAQ=w500-rw",
+   "name": "泡沫咖啡 (8oz)*",
+   "price": "25.1"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/fWyDP9OBKZIKDYUXxDwSXMNOC97gJGw1Yzt2fB82k00pc-dxazIjMTTA8czK9S6PyfUQFLm1leBp6uacd1768Evjay0i96RUv-3VnjPb=w500-rw",
+   "name": "熱鮮奶咖啡 (8oz)*",
+   "price": "25.1"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/VTsooC_zgs-YJ1Cu6UbXYIeEOVnpN9HZ3OCacQq3bHLlzM-3Gf-qSr2kN27dg6Vy-VWEXOo1bK7JQU21iN2z4JzWpoeSoKOjFH2d0PWa=w500-rw",
+   "name": "熱榛子鮮奶咖啡(8oz)*",
+   "price": "28.1"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/tgk_FYzjWo39MmyJFJuahj3gQEFy4QOVBJWB7u19RijWK5Bvzxk-thW9AinCb6V5mQQV9mzKTLMTdv8ORsWBYvzdi-6KYE2-qc6ORdYm=w500-rw",
+   "name": "熱雲呢拿鮮奶咖啡(8oz)*",
+   "price": "28.1"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/9QXFWOIfb0wVYkrG7xUpYc3IZrPdLxDakiIACuFWm_MQV_91H_lkv2qcnDdXY0mRSI1lFzUPb0b8qa0U1qbC_3-TG_8fm1SQ2DiqJE0=w500-rw",
+   "name": "熱朱古力咖啡(8oz)*",
+   "price": "27.1"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": "https://lh3.googleusercontent.com/v72GrQVY_hOibI6IuNAnYqbin7XzrDT2u5wKCHskHq4iE1H8bXM-coEUZ2ub-SlZ2ByQjHeNwNYYx7VQmAJ6xd0z9wWuAGZS-JCdbqA=w500-rw",
+   "name": "熱美式咖啡(8oz)*",
+   "price": "22"
+  },
+  {
+   "cat": "Coffee Lounge",
+   "img": null,
+   "name": "熱鮮奶",
+   "price": "16.5"
+  },
+  {
+   "cat": "單售食品",
+   "img": null,
+   "name": "碗仔翅",
+   "price": "18"
+  },
+  {
+   "cat": "特色飲品",
+   "img": "https://content.aigens.com/image/FRq3hrXFNFahbreG9Nd-hxM4MJ1X5e5y58Z36Gqkok8=w400.jpg",
+   "name": "黃皮金桔檸檬莉汽泡茶",
+   "price": "19"
+  },
+  {
+   "cat": "特色飲品",
+   "img": "https://content.aigens.com/image/TvELfDpCvM3vR5leCLsVeor2nkcMF662EnXjC_2YeDk=w400.jpg",
+   "name": "百香果金桔茉莉汽泡茶",
+   "price": "19"
+  },
+  {
+   "cat": "特色飲品",
+   "img": "https://content.aigens.com/image/tmOdfD4lFB9MZ7HCKaDriAfR89HOlswAmxLbJaqHjYo=w400.jpg",
+   "name": "紅芭樂梳打",
+   "price": "19"
+  },
+  {
+   "cat": "特色飲品",
+   "img": "https://content.aigens.com/image/kHBWL-SFFkIKGTjQY34a-vaMhToO8wo6Zqg7neeiaAU=w400.jpg",
+   "name": "金桔鹹檸七喜",
+   "price": "18"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/VJt8IDusMwszwM8JfMf4JgkXvvQ8cABeyuKhHDY3xys=w400.jpg",
+   "name": "熱咖啡",
+   "price": "6"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/WtQRWJ065du6fdWLtyseB8dM9fHwvfZ7RsprD3gdjcc=w400.jpg",
+   "name": "熱黑咖啡",
+   "price": "6"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/en3fIi3No3Oq972DhDxoTHTh71B2Y6GYk1rZt1r9F-o=w400.jpg",
+   "name": "熱奶茶",
+   "price": "6"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/Unw_co_z-jw72K5vhXgcD4DfN89PXfQn42ny46uY38k=w400.jpg",
+   "name": "熱鴛鴦",
+   "price": "6"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/rKZ81h_LN1FF2E6AnKZ5k6Zn6B6UX40nlXaTHuWyQOI=w400.jpg",
+   "name": "熱檸檬茶",
+   "price": "6"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/fKA6oMemBurxQjYdJgEUOR9bldBb_SdeEb4AHdKGUj0=w400.jpg",
+   "name": "熱檸檬水",
+   "price": "6"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/yeW4nCxHKLNggM6GXGzlPeYKz4jBmWg6I7rJVEiVQsQ=w400.jpg",
+   "name": "熱阿華田",
+   "price": "6"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/-gbhyfiH3nm6Fun2vzCeXd9F67cDQ78zX-HdwXFC-y8=w400.jpg",
+   "name": "熱好立克",
+   "price": "6"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/phajhb6PJ8QeAlyy1hrwXNVECKx7nIe3FcGc7Q0rWII=w400.jpg",
+   "name": "凍咖啡",
+   "price": "7.5"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/AgOf20zJWNpC9uTj_lq0TGjA5kr-OE5LdNCcsy1xrYY=w400.jpg",
+   "name": "凍黑咖啡",
+   "price": "7.5"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/21gqGuetP4iMvWj9heRYZjkaf1wH3FKADZw_DPy8EZw=w400.jpg",
+   "name": "凍奶茶",
+   "price": "7.5"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/U8zafs41kDGqhxt5u0tQz-QTRV5Unj9YPHhBYjhDi84=w400.jpg",
+   "name": "凍鴛鴦",
+   "price": "7.5"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/SHJlCFpq1Z3a1IbECu3mz2VxkFhwibF6_aMA_8bBhsI=w400.jpg",
+   "name": "凍檸檬茶",
+   "price": "7.5"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/Xxta3yhim-09BuhH2T2maJj_lqdZ3enS6bWi-XI4i9M=w400.jpg",
+   "name": "凍檸檬水",
+   "price": "7.5"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/FZ-kzhW5ksrb2UdiqriRjPMo25PiUYoNTT5a870spLA=w400.jpg",
+   "name": "凍阿華田",
+   "price": "7.5"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/IzxwqtGhRwuycA7eoSxz1a118xMMOuAhatYCle-tlKU=w400.jpg",
+   "name": "凍好立克",
+   "price": "7.5"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/4Trbd8YyAVCYaqqIKde8Mi7-BZklawY1QoiZK64Wf0M=w192.png",
+   "name": "細百事(杯)",
+   "price": "6"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/wfnJGScbZMxHhAhnwIi84zUkgdzUmTOc-OIOOXnbGM8=w225.png",
+   "name": "細七喜 (杯)",
+   "price": "6"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/w5YV0otJDa7A7dNzdSCpH-H8NhwFWoej2z9Uo12jgOo=w512.png",
+   "name": "美年達 (杯)",
+   "price": "6"
+  },
+  {
+   "cat": "飲品",
+   "img": "https://content.aigens.com/image/TWw-R59w_VD-ez1Okl0vutznfIV9qehTHeSHPud19Ro=w400.jpg",
+   "name": "輕怡百事(杯)",
+   "price": "6"
+  },
+  {
+   "cat": "其他",
+   "img": "https://lh3.googleusercontent.com/H7tAepfgZNktBryIAfNas_7qeCj4UIfrjWQJgMXk-LRM2yG85zbNDgxEXPxEj_fP4ySppRmT6rnLaWpPCzpDVuhaN48xcnWaR4d2iKA=w500-rw",
+   "name": "環保餐盒(只供外賣使用)",
+   "price": "1"
+  },
+  {
+   "cat": "其他",
+   "img": "https://lh3.googleusercontent.com/YtdmV-x_FEN4AMYRhWwKIqkdVRGalOU2YHC-djvcGxOtmcWea_f3xFz0khVhA2Lq4MRI7KMcjWltoaWNz39TsWh7x8wpTpWklqUqmaC-sg=w500-rw",
+   "name": "環保餐具 (只供外賣使用)",
+   "price": "1"
+  }
+ ]
+}

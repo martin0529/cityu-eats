@@ -147,12 +147,16 @@ window.CITYU_EATS_DATA = {
   const CFG = window.CITYU_EATS_CONFIG;
   const CACHE_KEY = 'cityu-eats:menu-cache:v1';
 
-  function apply(canteens, dishes) {
+  function apply(canteens, dishes, categories) {
     const D = window.CITYU_EATS_DATA;
     D.canteens.length = 0;
     D.canteens.push(...canteens);
     D.dishes.length = 0;
     D.dishes.push(...dishes);
+    if (categories && categories.length) {
+      D.categories.length = 0;
+      D.categories.push(...categories);
+    }
   }
   function normalizeCanteen(r) {
     return {
@@ -178,17 +182,24 @@ window.CITYU_EATS_DATA = {
     const timer = setTimeout(() => ctl.abort(), 5000);
     const headers = { apikey: CFG.SUPABASE_ANON_KEY };
     try {
-      const [cRes, dRes] = await Promise.all([
+      const [cRes, dRes, catRes] = await Promise.all([
         fetch(CFG.SUPABASE_URL + '/rest/v1/canteens?select=*&order=sort.asc', { headers, signal: ctl.signal }),
         fetch(CFG.SUPABASE_URL + '/rest/v1/dishes?select=*&order=sort.asc', { headers, signal: ctl.signal }),
+        fetch(CFG.SUPABASE_URL + '/rest/v1/categories?select=*&order=sort.asc', { headers, signal: ctl.signal }),
       ]);
       if (!cRes.ok || !dRes.ok) return null;
       const cs = await cRes.json();
       const ds = await dRes.json();
       if (!Array.isArray(cs) || !Array.isArray(ds) || !cs.length || !ds.length) return null;
+      let cats = null;
+      if (catRes.ok) {
+        const list = await catRes.json();
+        if (Array.isArray(list) && list.length) cats = list.map((c) => ({ id: c.id, zh: c.zh, en: c.en }));
+      }
       return {
         canteens: cs.map(normalizeCanteen),
         dishes: ds.filter((d) => d.available !== false).map(normalizeDish),
+        categories: cats,
       };
     } catch (e) {
       return null;
@@ -202,9 +213,9 @@ window.CITYU_EATS_DATA = {
     async load() {
       const cloud = await fetchCloud();
       if (cloud) {
-        apply(cloud.canteens, cloud.dishes);
+        apply(cloud.canteens, cloud.dishes, cloud.categories);
         try {
-          localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), canteens: cloud.canteens, dishes: cloud.dishes }));
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), canteens: cloud.canteens, dishes: cloud.dishes, categories: cloud.categories }));
         } catch (e) { /* 儲存空間滿了就算 */ }
         this.source = 'cloud';
         return this.source;
@@ -214,7 +225,7 @@ window.CITYU_EATS_DATA = {
         if (raw) {
           const c = JSON.parse(raw);
           if (c && Array.isArray(c.dishes) && c.dishes.length && Array.isArray(c.canteens) && c.canteens.length) {
-            apply(c.canteens, c.dishes);
+            apply(c.canteens, c.dishes, c.categories);
             this.source = 'cache';
             return this.source;
           }
