@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-02T00:00:00+08:00",
+  "title": "Design System: 城大搵食指南 CityU Eats",
+  "extensions": {
+    "colorMeta": {
+      "red": { "role": "primary", "displayName": "Char-siu Tomato", "canonical": "#C93A1D", "tonalRamp": ["#5E1408", "#7E2410", "#A32B12", "#C93A1D", "#D95A3B", "#E87F63", "#F2A996", "#F9E2D2"] },
+      "butter": { "role": "primary-soft", "displayName": "Butter Cream", "canonical": "#FFF3DC", "tonalRamp": ["#8A7A5C", "#A89468", "#C6AE7E", "#E0C894", "#EFDCB4", "#F8E7C6", "#FFF3DC", "#FFFAEF"] },
+      "yolk": { "role": "secondary", "displayName": "Egg Yolk", "canonical": "#F2B21B", "tonalRamp": ["#6F4A00", "#966604", "#C8880A", "#F2B21B", "#F6C24A", "#FAD27E", "#FDE2AE", "#FFF3D8"] },
+      "mint": { "role": "secondary", "displayName": "Mint Tile", "canonical": "#2E7D6B", "tonalRamp": ["#123B31", "#1E5749", "#2E7D6B", "#4A9885", "#6FB29E", "#97CCBB", "#C1E3D7", "#E5F4EE"] },
+      "paper": { "role": "neutral", "displayName": "Butter Paper", "canonical": "#FBF2DF", "tonalRamp": ["#8A7A5C", "#B4A17B", "#D4C39B", "#E9D9B8", "#F5E8CC", "#FBF2DF", "#FFF9EC", "#FFFDF4"] },
+      "ink": { "role": "neutral", "displayName": "Soy Ink", "canonical": "#2B1A0E", "tonalRamp": ["#241608", "#2B1A0E", "#453018", "#5E4326", "#775835", "#917048", "#AC8B60", "#C9AB7E"] },
+      "muted": { "role": "neutral", "displayName": "Muted Soy", "canonical": "#6E5637", "tonalRamp": ["#3E2F1C", "#54432A", "#6E5637", "#8A7150", "#A68D6E", "#C2AB8F", "#DDCCB4", "#F2E9DB"] },
+      "dark": { "role": "neutral", "displayName": "Dark Roast", "canonical": "#241608", "tonalRamp": ["#150C03", "#241608", "#32200F", "#48331B", "#61492C", "#7C6342", "#998061", "#B9A488"] },
+      "ac2": { "role": "tertiary", "displayName": "AC2 Yolk Gold", "canonical": "#DD9A08", "tonalRamp": ["#6F4A00", "#966904", "#BB8306", "#DD9A08", "#E8AE35", "#F0C264", "#F6D493", "#FBE8C6"] },
+      "ac3": { "role": "tertiary", "displayName": "AC3 Mint", "canonical": "#2E7D6B", "tonalRamp": ["#123B31", "#1E5749", "#2E7D6B", "#4A9885", "#6FB29E", "#97CCBB", "#C1E3D7", "#DFEEE6"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only, one per page, TC serif 900." },
+      "headline": { "displayName": "Headline", "purpose": "Section/category titles; EN grotesque label rides inline after." },
+      "title": { "displayName": "Title", "purpose": "Dish and canteen names." },
+      "body": { "displayName": "Body", "purpose": "Prose, reviews, descriptions." },
+      "label": { "displayName": "Label", "purpose": "EN caps labels, canteen codes, all numerals (tabular)." }
+    },
+    "shadows": [
+      { "name": "shadow-soft", "value": "0 14px 30px rgba(43,26,14,0.13)", "purpose": "Card hover lift." },
+      { "name": "shadow-lift", "value": "0 8px 18px rgba(43,26,14,0.10)", "purpose": "Quote-card hover, band photo, floating layers." },
+      { "name": "button-float", "value": "0 6px 16px rgba(43,26,14,0.20)", "purpose": "Solid buttons; deepens on hover." },
+      { "name": "polaroid", "value": "0 18px 34px rgba(43,26,14,0.35)", "purpose": "Hero photo cluster only." },
+      { "name": "ephemera-offset", "value": "2px 3px 0 rgba(43,26,14,0.22)", "purpose": "Committed print ephemera: red seal and price stickers ONLY — the sole hard-offset shadows in the system." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "All transitions and animations; the system's only easing family." },
+      { "name": "reveal", "value": "opacity+translateY 0.55s ease-out-expo", "purpose": "Scroll entrance; content visible by default, hidden class added by JS pre-paint only when IO and motion allowed." },
+      { "name": "stamp-slam", "value": "scale 2.8→1 rotate −18°→−8°, 0.42s ease-out-expo", "purpose": "Randomizer result stamp; the page's single authored moment." }
+    ],
+    "breakpoints": [
+      { "name": "lg", "value": "1020px" },
+      { "name": "md", "value": "760px" },
+      { "name": "sm", "value": "480px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Red pill CTA — order actions, roll button, submit.",
+      "html": "<button class=\"ds-btn-primary\">今日食咩</button>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; gap:9px; background: var(--red, #C93A1D); color: var(--butter, #FFF3DC); border:none; border-radius:999px; padding:12px 22px; font:600 15.5px/1.2 'Noto Sans TC',sans-serif; box-shadow:0 6px 16px rgba(43,26,14,.2); cursor:pointer; transition: transform .18s cubic-bezier(.16,1,.3,1), background .18s ease, box-shadow .18s ease; } .ds-btn-primary:hover { background: var(--red-deep, #A32B12); transform: translateY(-2px); box-shadow:0 8px 20px rgba(43,26,14,.24); } .ds-btn-primary:focus-visible { outline:2.5px solid var(--red-deep,#A32B12); outline-offset:2.5px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Butter pill for actions on the red hero field.",
+      "html": "<button class=\"ds-btn-butter\">睇三個飯堂</button>",
+      "css": ".ds-btn-butter { display:inline-flex; align-items:center; gap:9px; background: var(--butter, #FFF3DC); color: var(--ink, #2B1A0E); border:none; border-radius:999px; padding:12px 22px; font:600 15.5px/1.2 'Noto Sans TC',sans-serif; box-shadow:0 6px 16px rgba(43,26,14,.22); cursor:pointer; transition: transform .18s cubic-bezier(.16,1,.3,1), box-shadow .18s ease; } .ds-btn-butter:hover { transform: translateY(-2px); box-shadow:0 8px 20px rgba(43,26,14,.26); }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Category/scope filter pill with count; 44px touch target.",
+      "html": "<button class=\"ds-chip\">粉麵 <i>5</i></button> <button class=\"ds-chip ds-chip-on\">全部 <i>27</i></button>",
+      "css": ".ds-chip { display:inline-flex; align-items:center; gap:6px; border:1.5px solid rgba(43,26,14,.25); background:transparent; color:var(--ink,#2B1A0E); border-radius:999px; min-height:44px; padding:10px 16px; font:600 13.5px/1.2 'Noto Sans TC',sans-serif; cursor:pointer; transition: all .16s ease; } .ds-chip i { font:600 11.5px/1 'Bricolage Grotesque',sans-serif; font-style:normal; color:var(--muted,#6E5637); } .ds-chip:hover { border-color: var(--ink,#2B1A0E); } .ds-chip-on { background: var(--ink,#2B1A0E); border-color: var(--ink,#2B1A0E); color: var(--paper,#FBF2DF); } .ds-chip-on i { color: var(--yolk,#F2B21B); }"
+    },
+    {
+      "name": "Verdict Stamp",
+      "kind": "custom",
+      "refersTo": "stamp-must",
+      "description": "The chop: verdict badges 必食/普通/避雷, rotated with double ring on 必食.",
+      "html": "<span class=\"ds-stamp ds-stamp-must\">必食</span> <span class=\"ds-stamp ds-stamp-ok\">普通</span> <span class=\"ds-stamp ds-stamp-avoid\">避雷</span>",
+      "css": ".ds-stamp { display:inline-flex; padding:4px 11px; border-radius:8px; border:2.2px solid currentColor; font:700 13px/1.3 'Noto Sans TC',sans-serif; letter-spacing:.08em; transform:rotate(-2.5deg); } .ds-stamp-must { color: var(--red,#C93A1D); background:rgba(201,58,29,.07); box-shadow: inset 0 0 0 1px rgba(201,58,29,.28); } .ds-stamp-ok { color: var(--muted,#6E5637); background:rgba(110,86,55,.07); } .ds-stamp-avoid { color: var(--ink,#2B1A0E); background:rgba(43,26,14,.07); box-shadow: inset 0 0 0 1px rgba(43,26,14,.3); }"
+    },
+    {
+      "name": "Price Sticker",
+      "kind": "custom",
+      "refersTo": "card-dish",
+      "description": "Egg-yolk price pill overlapping dish photos; one of two allowed hard-offset shadows.",
+      "html": "<span class=\"ds-price\">$28.6</span>",
+      "css": ".ds-price { display:inline-block; background: var(--yolk,#F2B21B); color: var(--ink,#2B1A0E); font:700 14px/1 'Bricolage Grotesque',sans-serif; font-variant-numeric:tabular-nums; padding:6px 11px; border-radius:999px; transform:rotate(3deg); box-shadow:1.5px 2.5px 0 rgba(43,26,14,.25); }"
+    },
+    {
+      "name": "Dish Card",
+      "kind": "card",
+      "refersTo": "card-dish",
+      "description": "Photo-first dish tile: strict 4:3 media, sticker, name, bilingual sub, stamp, rating.",
+      "html": "<div class=\"ds-dish\"><div class=\"ds-dish-media\"></div><div class=\"ds-dish-body\"><span class=\"ds-dish-name\">燒味雙拼飯</span><span class=\"ds-dish-en\">Dual Roast Meat Rice</span><span class=\"ds-dish-rate\"><b>4.2</b> ★★★★☆ <em>6則評論</em></span></div></div>",
+      "css": ".ds-dish { display:flex; flex-direction:column; background: var(--card,#FFFDF4); border:1.5px solid rgba(43,26,14,.25); border-radius:14px; overflow:hidden; max-width:240px; transition: transform .22s cubic-bezier(.16,1,.3,1), box-shadow .22s ease; } .ds-dish:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(43,26,14,.13); } .ds-dish-media { position:relative; flex:none; min-height:0; aspect-ratio:4/3; background: var(--paper-2,#F5E8CC); } .ds-dish-body { display:flex; flex-direction:column; gap:4px; padding:13px 15px 15px; } .ds-dish-name { font:700 15.5px/1.4 'Noto Sans TC',sans-serif; color:var(--ink,#2B1A0E); } .ds-dish-en { font:500 12px/1.4 'Bricolage Grotesque',sans-serif; color:var(--muted,#6E5637); } .ds-dish-rate { display:inline-flex; gap:7px; align-items:center; font-size:13.5px; color:var(--muted,#6E5637); } .ds-dish-rate b { font:700 15px/1 'Bricolage Grotesque',sans-serif; color:var(--ink,#2B1A0E); } .ds-dish-rate em { font-style:normal; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "body",
+      "description": "Review form input with red focus ring and red caret.",
+      "html": "<input class=\"ds-input\" placeholder=\"匿名同學\">",
+      "css": ".ds-input { font:400 14.5px/1.6 'Noto Sans TC',sans-serif; color:var(--ink,#2B1A0E); background:var(--card,#FFFDF4); border:1.5px solid rgba(43,26,14,.25); border-radius:10px; padding:11px 13px; caret-color: var(--red,#C93A1D); } .ds-input::placeholder { color: rgba(43,26,14,.7); } .ds-input:focus { outline:none; border-color: var(--red,#C93A1D); box-shadow:0 0 0 3px rgba(201,58,29,.14); }"
+    },
+    {
+      "name": "Canteen Code Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Canteen identity chip AC1/AC2/AC3, rotated −2°, per-canteen accent.",
+      "html": "<span class=\"ds-code ds-code-ac1\">AC1</span> <span class=\"ds-code ds-code-ac2\">AC2</span> <span class=\"ds-code ds-code-ac3\">AC3</span>",
+      "css": ".ds-code { display:inline-block; font:800 13px/1 'Bricolage Grotesque',sans-serif; letter-spacing:.1em; padding:6px 11px; border-radius:7px; transform:rotate(-2deg); } .ds-code-ac1 { background:#C93A1D; color:#FFF3DC; } .ds-code-ac2 { background:#DD9A08; color:#2B1A0E; } .ds-code-ac3 { background:#2E7D6B; color:#FFFDF4; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "貼在飯堂門口的熱門食誌 — a zine pinned to the canteen door",
+    "overview": "The system reads like a warm Hong Kong food zine that happens to be a utility: a butter-eggshell paper ground on which whole regions of saturated color do the talking — a full-bleed char-siu-tomato hero band, a soy-ink avoid-list panel, a dark ink footer. Verdicts are stamped like real chop marks, prices are egg-yolk stickers, and food photography is the protagonist everywhere else. Color commits at page scale: if a screenshot reads as cream-with-accents, the strategy has failed.",
+    "keyCharacteristics": [
+      "Whole-region color fields on a warm paper ground",
+      "Chop/stamp verdict language: rotation + double ring",
+      "Egg-yolk stickers and Bricolage tabular numerals",
+      "Inline EN grotesque labels beside TC serif headings",
+      "One authored motion moment per view; exponential ease-out everywhere"
+    ],
+    "rules": [
+      { "name": "The Region-Field Rule", "body": "Saturated color owns whole page regions; it is never reduced to scattered accents on naked ground.", "section": "colors" },
+      { "name": "The Chop Rule", "body": "A verdict is a stamp: 2.2px currentColor border + inset ring + −2.5° rotation. No plain pills for verdicts.", "section": "colors" },
+      { "name": "The Warm-Gray Ban", "body": "Secondary text tints from soy ink at opacities, never from gray.", "section": "colors" },
+      { "name": "The Inline-Label Rule", "body": "English labels sit inline after the Chinese heading at baseline; an eyebrow above a heading is a defect.", "section": "typography" },
+      { "name": "The Tabular Price Rule", "body": "Every repeating numeral is Bricolage with tabular figures.", "section": "typography" }
+    ],
+    "dos": [
+      "Do own whole regions with color — hero, avoid band and footer are fields, not accents",
+      "Do stamp verdicts and set numerals in Bricolage tabular figures",
+      "Do keep motion to one authored moment; ease out exponentially (cubic-bezier(.16,1,.3,1))",
+      "Do tint secondary text from soy ink at 55–70%"
+    ],
+    "donts": [
+      "Don't put an English label above a Chinese heading",
+      "Don't use gray text or zero-blur offset shadows outside the seal/sticker exception",
+      "Don't fake material: no gradient text, no glass/blur decoration, no CSS bevels or faux-print textures",
+      "Don't give one canteen more visual authority than another"
+    ]
+  }
+}

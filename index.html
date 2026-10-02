@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CityU Eats 城大飯堂指南 — 視覺稿</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --paper:#F5EFE3;
+  --paper-2:#EDE5D2;
+  --card:#FFFDF7;
+  --ink:#1B1611;
+  --ink-soft:#5D5546;
+  --line:rgba(27,22,17,.16);
+  --line-soft:rgba(27,22,17,.09);
+  --vermilion:#D93B1C;
+  --vermilion-deep:#B92E12;
+  --jade:#1E6E46;
+  --jade-tint:rgba(30,110,70,.09);
+  --amber:#F0A81E;
+  --amber-tint:rgba(240,168,30,.16);
+  --dark:#181310;
+  --cream:#F5EFE3;
+  --cream-soft:rgba(245,239,227,.62);
+  --cream-line:rgba(245,239,227,.16);
+  --serif:"Noto Serif TC","PMingLiU",serif;
+  --sans:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+  --latin:"Archivo","Noto Sans TC",Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#232019;font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased}
+img{display:block}
+a{color:inherit;text-decoration:none}
+
+/* ============ FRAME SYSTEM ============ */
+.deck{display:flex;flex-direction:column;align-items:center;gap:56px;padding:56px 0}
+.frame{width:1440px;flex:none;background:var(--paper);position:relative;overflow:hidden}
+.flabel{position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:50;
+  font-family:var(--latin);font-size:11px;font-weight:700;letter-spacing:.18em;color:#fff;
+  background:rgba(24,19,16,.72);padding:6px 14px;border-radius:99px;pointer-events:none}
+body.solo{background:#232019;padding:0}
+body.solo .deck{padding:0;gap:0}
+body.solo .frame{display:none}
+body.solo .frame.on{display:block}
+body.solo .flabel{display:none}
+
+/* ============ SHARED PRIMITIVES ============ */
+.pad{padding:76px 88px}
+.kicker{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--vermilion)}
+.kicker::before{content:"";width:34px;height:1px;background:var(--vermilion)}
+.kicker .n{color:var(--ink-soft)}
+.dark .kicker .n{color:var(--cream-soft)}
+h2.sec{font-family:var(--serif);font-weight:900;font-size:54px;line-height:1.18;letter-spacing:.015em;margin-top:18px}
+.sec-note{font-size:13px;color:var(--ink-soft);line-height:1.7}
+.star{color:var(--amber);letter-spacing:2px;font-size:13px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--ink);
+  border:1px solid var(--line);border-radius:99px;padding:6px 13px;background:transparent}
+.chip.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.chip.verm{background:var(--vermilion);color:#fff;border-color:var(--vermilion)}
+.code{font-family:var(--latin);font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--ink-soft);
+  border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:rgba(255,253,247,.6)}
+.thumb-up,.bolt{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;border-radius:99px;padding:4px 10px}
+.thumb-up{color:var(--jade);background:var(--jade-tint)}
+.bolt{color:#8A5800;background:var(--amber-tint)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:700;border-radius:99px;
+  padding:15px 30px;cursor:pointer;border:1px solid transparent}
+.btn.primary{background:var(--vermilion);color:#fff}
+.btn.primary:hover{background:var(--vermilion-deep)}
+.btn.ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+.dark .btn.ghost{border-color:var(--cream-line);color:var(--cream)}
+.stamp{display:grid;place-items:center;width:62px;height:62px;background:var(--vermilion);color:var(--cream);
+  font-family:var(--serif);font-weight:900;font-size:32px;border-radius:12px;transform:rotate(-4deg);
+  box-shadow:0 10px 24px -10px rgba(217,59,28,.55)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--jade);box-shadow:0 0 0 4px rgba(30,110,70,.18)}
+.dot.amber{background:var(--amber);box-shadow:0 0 0 4px rgba(240,168,30,.2)}
+.dot.verm{background:var(--vermilion);box-shadow:0 0 0 4px rgba(217,59,28,.18)}
+
+/* ============ S1 HERO ============ */
+#s1{height:880px;color:var(--cream)}
+#s1 .bg{position:absolute;inset:0;background:#26170F}
+#s1 .bg img{width:100%;height:100%;object-fit:cover;object-position:center 58%}
+#s1 .shade{position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(22,13,8,.92) 0%,rgba(22,13,8,.72) 34%,rgba(22,13,8,.28) 68%,rgba(22,13,8,.12) 100%),
+             linear-gradient(to top,rgba(22,13,8,.85) 0%,rgba(22,13,8,0) 42%)}
+.nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;
+  padding:34px 88px 0}
+.brand{display:flex;align-items:center;gap:14px}
+.brand .stamp{width:48px;height:48px;font-size:24px;border-radius:10px}
+.brand .wm{font-family:var(--latin);font-weight:800;font-size:19px;letter-spacing:.08em}
+.brand .wm-sub{font-size:11px;color:var(--cream-soft);letter-spacing:.32em;margin-top:3px}
+.nav-links{display:flex;gap:34px;font-size:14.5px;font-weight:500;color:var(--cream-soft)}
+.nav-links b{color:var(--cream);font-weight:500}
+.hero-body{position:absolute;left:88px;right:88px;bottom:64px;z-index:2}
+.hero-kicker{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11.5px;
+  font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:rgba(245,239,227,.85)}
+.hero-kicker::before{content:"";width:34px;height:1px;background:var(--vermilion)}
+h1.hero{font-family:var(--serif);font-weight:900;font-size:128px;line-height:1.06;letter-spacing:.02em;margin:20px 0 18px;
+  text-shadow:0 3px 30px rgba(0,0,0,.35)}
+h1 .q{color:var(--amber)}
+.hero-sub{max-width:600px;font-size:16.5px;line-height:1.8;color:rgba(245,239,227,.88)}
+.hero-search{display:flex;align-items:center;gap:10px;margin-top:30px;background:#FFFDF7;border-radius:99px;
+  padding:8px 8px 8px 26px;width:640px;box-shadow:0 24px 60px -20px rgba(0,0,0,.5)}
+.hero-search .ph{flex:1;font-size:15px;color:#9A9080}
+.hero-search .go{font-size:14.5px;font-weight:700;color:#fff;background:var(--vermilion);border-radius:99px;padding:13px 30px}
+.hero-chips{display:flex;gap:10px;margin-top:22px}
+.hero-chips .chip{color:rgba(245,239,227,.92);border-color:rgba(245,239,227,.38);background:rgba(22,13,8,.25);backdrop-filter:blur(4px)}
+.hero-chips .chip.hot{background:var(--vermilion);border-color:var(--vermilion);color:#fff}
+.hero-live{position:absolute;right:88px;bottom:64px;z-index:2;display:flex;align-items:center;gap:10px;
+  font-size:13px;color:rgba(245,239,227,.9);background:rgba(22,13,8,.45);border:1px solid rgba(245,239,227,.22);
+  border-radius:99px;padding:11px 20px;backdrop-filter:blur(6px)}
+
+/* ============ S2 CANTEENS ============ */
+#s2 .head-row{display:flex;align-items:flex-end;justify-content:space-between}
+.canteen-grid{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:26px;margin-top:46px}
+.ccard{background:var(--card);border:1px solid var(--line-soft);border-radius:20px;overflow:hidden;
+  box-shadow:0 18px 40px -26px rgba(27,22,17,.35);display:flex;flex-direction:column}
+.ccard .ph{position:relative;height:224px}
+.ccard .ph img{width:100%;height:100%;object-fit:cover}
+.ccard .status{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;
+  color:#fff;background:rgba(24,19,16,.62);backdrop-filter:blur(6px);border-radius:99px;padding:7px 14px}
+.ccard .rank{position:absolute;top:14px;right:14px;font-family:var(--latin);font-size:11px;font-weight:800;letter-spacing:.12em;
+  background:var(--vermilion);color:#fff;border-radius:8px;padding:6px 10px}
+.ccard .bd{padding:24px 26px 26px;display:flex;flex-direction:column;gap:14px;flex:1}
+.ccard .name{display:flex;align-items:baseline;gap:12px}
+.ccard .name h3{font-family:var(--latin);font-weight:800;font-size:30px;letter-spacing:.02em}
+.ccard .name span{font-size:12.5px;color:var(--ink-soft)}
+.ccard .meta{display:flex;gap:22px;font-size:12.5px;color:var(--ink-soft);line-height:1.5}
+.ccard .meta b{display:block;font-size:17px;color:var(--ink);font-weight:700;margin-bottom:2px}
+.ccard .today{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--ink);background:var(--paper);
+  border:1px dashed var(--line);border-radius:12px;padding:10px 14px}
+.ccard .today em{font-style:normal;color:var(--vermilion);font-weight:700}
+.ccard .foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:6px}
+.crowd{display:flex;align-items:center;gap:3px}
+.crowd i{width:6px;height:14px;border-radius:3px;background:var(--line-soft)}
+.crowd i.f1{background:var(--jade)}.crowd i.f2{background:var(--amber)}.crowd i.f3{background:var(--vermilion)}
+.crowd-label{font-size:11.5px;color:var(--ink-soft);margin-left:8px}
+.s2-legend{display:flex;justify-content:space-between;align-items:center;margin-top:30px;padding-top:20px;border-top:1px solid var(--line-soft);
+  font-size:12px;color:var(--ink-soft)}
+
+/* ============ S3 MENU BROWSE ============ */
+#s3 .browse{display:grid;grid-template-columns:264px 1fr;gap:44px;margin-top:44px}
+.rail{border-right:1px solid var(--line-soft);padding-right:36px;display:flex;flex-direction:column;gap:26px}
+.rail h4{font-family:var(--latin);font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);display:flex;justify-content:space-between}
+.rail .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.rail .chip{font-size:12px;padding:6px 12px}
+.rail .sort{margin-top:4px;display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);
+  border-radius:12px;padding:11px 14px;font-size:13px;color:var(--ink);background:var(--card)}
+.rail .sort span{color:var(--ink-soft)}
+.dish-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.dcard{background:var(--card);border:1px solid var(--line-soft);border-radius:18px;overflow:hidden;
+  box-shadow:0 14px 32px -24px rgba(27,22,17,.35);display:flex;flex-direction:column}
+.dcard .ph{position:relative;height:168px}
+.dcard .ph img{width:100%;height:100%;object-fit:cover}
+.dcard .ph .fav{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(255,253,247,.9);color:var(--ink);font-size:14px}
+.dcard .ph .tag{position:absolute;left:12px;bottom:12px;font-size:11px;font-weight:700;color:#fff;background:var(--vermilion);
+  border-radius:7px;padding:4px 9px}
+.dcard .ph .tag.j{background:var(--jade)}
+.dcard .bd{padding:16px 18px 18px;display:flex;flex-direction:column;gap:9px}
+.dcard .r1{display:flex;align-items:center;justify-content:space-between}
+.dcard h3{font-size:17.5px;font-weight:700;letter-spacing:.01em}
+.dcard .stall{font-size:12px;color:var(--ink-soft)}
+.dcard .r3{display:flex;align-items:center;justify-content:space-between;margin-top:2px}
+.dcard .score{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-soft)}
+.dcard .score b{color:var(--ink);font-size:14px}
+.dcard .price{font-family:var(--latin);font-weight:800;font-size:17px}
+.dcard .price small{font-size:11px;font-weight:600;color:var(--ink-soft);margin-right:2px}
+.dcard .r4{display:flex;gap:7px}
+
+/* ============ S4 DISH DETAIL ============ */
+#s4 .detail{display:grid;grid-template-columns:600px 1fr;gap:56px;margin-top:0;align-items:start}
+.photo-stack{position:relative;height:640px}
+.photo-stack .main{position:absolute;inset:0 0 74px 0;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(27,22,17,.45)}
+.photo-stack .main img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.photo-stack .inset{position:absolute;right:-24px;bottom:0;width:250px;height:170px;border-radius:16px;overflow:hidden;
+  border:6px solid var(--paper);box-shadow:0 22px 44px -22px rgba(27,22,17,.5)}
+.photo-stack .inset img{width:100%;height:100%;object-fit:cover}
+.dinfo .code-row{display:flex;align-items:center;gap:10px}
+.dinfo h2{font-family:var(--serif);font-weight:900;font-size:58px;line-height:1.12;margin:16px 0 6px}
+.dinfo .sub{font-size:14px;color:var(--ink-soft)}
+.dinfo .score-row{display:flex;align-items:center;gap:16px;margin:20px 0 6px}
+.dinfo .score-row .big{font-family:var(--latin);font-weight:800;font-size:40px}
+.dinfo .score-row .of{color:var(--ink-soft);font-size:14px}
+.rankchip{display:inline-flex;align-items:center;gap:7px;background:var(--vermilion);color:#fff;font-size:12px;
+  font-weight:700;border-radius:99px;padding:7px 14px}
+.bars{display:flex;flex-direction:column;gap:7px;margin:18px 0 24px;width:420px}
+.bar-row{display:grid;grid-template-columns:26px 1fr 38px;align-items:center;gap:12px;font-size:11.5px;color:var(--ink-soft)}
+.bar-row .track{height:7px;border-radius:99px;background:var(--paper-2);overflow:hidden}
+.bar-row .fill{height:100%;border-radius:99px;background:var(--ink)}
+.bar-row .fill.a{background:var(--amber)}
+.reviews{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+.review{background:var(--card);border:1px solid var(--line-soft);border-left:3px solid var(--jade);border-radius:14px;
+  padding:16px 20px;box-shadow:0 10px 24px -20px rgba(27,22,17,.4)}
+.review.bad{border-left-color:var(--amber)}
+.review p{font-size:14.5px;line-height:1.7}
+.review .who{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:12px;color:var(--ink-soft)}
+.review .who b{color:var(--ink);font-weight:700}
+.review .who .td{display:inline-flex;align-items:center;gap:4px;margin-left:auto}
+.cta-row{display:flex;align-items:center;gap:14px;margin-top:26px}
+.cta-row .save{font-size:13px;color:var(--ink-soft);border-bottom:1px solid var(--line);padding-bottom:2px}
+
+/* ============ S5 WALL ============ */
+#s5{background:var(--paper-2)}
+#s5 .texture{position:absolute;inset:0;opacity:.5;
+  background:radial-gradient(rgba(27,22,17,.05) 1px,transparent 1px);background-size:22px 22px}
+#s5 .wall{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:44px}
+.wall-col h3{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700;padding-bottom:14px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+.wall-col.good h3{color:var(--jade)}
+.wall-col.avoid h3{color:var(--ink)}
+.wall-col h3 .cnt{font-family:var(--latin);font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ink-soft);margin-left:auto}
+.wcard{background:var(--card);border:1px solid var(--line-soft);border-radius:16px;padding:20px 22px;margin-bottom:14px;
+  box-shadow:0 12px 26px -22px rgba(27,22,17,.4);position:relative}
+.wcard p{font-size:15px;line-height:1.75}
+.wcard .meta{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:12px;color:var(--ink-soft)}
+.wcard .meta .who b{color:var(--ink)}
+.wcard .meta .score{margin-left:auto}
+.wcard .badge{position:absolute;top:-9px;left:18px;font-size:10.5px;font-weight:800;letter-spacing:.08em;border-radius:6px;
+  padding:3px 9px;color:#fff;background:var(--jade)}
+.wall-col.avoid .wcard .badge{background:var(--ink);color:var(--amber)}
+.s5-cta{text-align:center;margin-top:34px;font-size:14.5px}
+.s5-cta a{border-bottom:2px solid var(--vermilion);padding-bottom:3px;font-weight:700;color:var(--ink)}
+
+/* ============ S6 RANKING (dark) ============ */
+#s6{background:var(--dark);color:var(--cream)}
+#s6 .head-row{display:flex;align-items:flex-end;justify-content:space-between}
+#s6 h2.sec{color:var(--cream)}
+.rank-list{margin-top:40px}
+.rank-row{display:grid;grid-template-columns:120px 88px 1fr 300px 120px;align-items:center;gap:26px;
+  padding:21px 0;border-bottom:1px solid var(--cream-line)}
+.rank-row:last-child{border-bottom:none}
+.rank-row .num{font-family:var(--latin);font-weight:800;font-size:56px;letter-spacing:-.01em;color:transparent;
+  -webkit-text-stroke:1.5px rgba(245,239,227,.5)}
+.rank-row.top .num{color:var(--vermilion);-webkit-text-stroke:0}
+.rank-row .thumb{width:84px;height:60px;border-radius:12px;overflow:hidden}
+.rank-row .thumb img{width:100%;height:100%;object-fit:cover}
+.rank-row .dish h3{font-family:var(--serif);font-weight:700;font-size:25px;letter-spacing:.02em}
+.rank-row .dish span{font-size:12.5px;color:var(--cream-soft);display:block;margin-top:5px;letter-spacing:.06em}
+.rank-row .votes{font-size:13px;color:var(--cream-soft);text-align:right}
+.rank-row .votes b{display:block;font-family:var(--latin);font-weight:800;font-size:19px;color:var(--cream)}
+.rank-row .rt{text-align:right}
+.rank-row .rt .star{font-size:12px}
+.rank-row .rt b{font-family:var(--latin);font-size:21px;font-weight:800;display:block;margin-bottom:3px}
+.s6-note{margin-top:22px;font-size:12px;color:var(--cream-soft);display:flex;justify-content:space-between}
+
+/* ============ S7 INFO ============ */
+#s7 .info-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:0;margin-top:46px}
+.icell{padding:0 40px;border-left:1px solid var(--line-soft)}
+.icell:first-child{padding-left:0;border-left:none}
+.icell h4{font-family:var(--latin);font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--vermilion)}
+.icell h5{font-family:var(--serif);font-weight:700;font-size:24px;margin:10px 0 24px}
+.trow{margin-bottom:22px}
+.trow .t-head{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px}
+.trow .t-head b{font-family:var(--latin);font-weight:800;font-size:14px}
+.trow .t-head span{color:var(--ink-soft);font-size:12px}
+.track2{position:relative;height:14px;border-radius:99px;background:var(--paper-2)}
+.track2 .open{position:absolute;top:0;bottom:0;border-radius:99px;background:var(--jade);opacity:.85}
+.track2 .peak{position:absolute;top:-4px;height:22px;width:14.3%;left:32.1%;border-radius:99px;background:var(--vermilion);opacity:.9}
+.t-scale{display:flex;justify-content:space-between;font-family:var(--latin);font-size:10px;color:var(--ink-soft);
+  letter-spacing:.06em;margin-top:8px;opacity:.8}
+.peak-legend{display:flex;gap:18px;margin-top:26px;font-size:11.5px;color:var(--ink-soft)}
+.peak-legend i{display:inline-block;width:22px;height:8px;border-radius:99px;margin-right:7px;vertical-align:1px}
+.nowrow{display:flex;align-items:center;gap:10px;font-size:13.5px;padding:11px 0;border-bottom:1px dashed var(--line-soft)}
+.nowrow:last-of-type{border-bottom:none}
+.nowrow b{font-family:var(--latin);font-weight:800}
+.nowrow .lvl{margin-left:auto;font-size:12px;font-weight:700;border-radius:99px;padding:4px 12px}
+.lvl.g{color:var(--jade);background:var(--jade-tint)}
+.lvl.a{color:#8A5800;background:var(--amber-tint)}
+.lvl.r{color:var(--vermilion);background:rgba(217,59,28,.1)}
+.next-peak{margin-top:18px;background:var(--card);border:1px solid var(--line-soft);border-radius:14px;padding:14px 18px;
+  font-size:13px;display:flex;align-items:center;gap:10px}
+.next-peak b{font-family:var(--latin);color:var(--vermilion);font-size:15px}
+.tips{display:flex;flex-direction:column;gap:16px}
+.tip{display:flex;gap:13px;font-size:13.5px;line-height:1.7;color:var(--ink-soft)}
+.tip .no{flex:none;width:26px;height:26px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;
+  font-family:var(--latin);font-size:11px;font-weight:800;color:var(--vermilion);background:var(--card)}
+.tip b{color:var(--ink)}
+
+/* ============ S8 FOOTER CTA ============ */
+#s8{background:var(--dark);color:var(--cream);text-align:center}
+#s8 .inner{padding:96px 120px 0;display:flex;flex-direction:column;align-items:center}
+#s8 .stamp{width:74px;height:74px;font-size:38px;border-radius:16px}
+#s8 h2{font-family:var(--serif);font-weight:900;font-size:62px;line-height:1.25;margin:34px 0 18px}
+#s8 h2 .q{color:var(--vermilion)}
+#s8 .sub{max-width:520px;font-size:16px;line-height:1.85;color:var(--cream-soft)}
+#s8 .cta-row{display:flex;gap:16px;margin-top:38px}
+#s8 .foot{margin-top:88px;border-top:1px solid var(--cream-line);padding:30px 88px 36px;
+  display:flex;align-items:center;justify-content:space-between;font-size:12.5px;color:var(--cream-soft)}
+#s8 .foot .links{display:flex;gap:26px}
+#s8 .foot .brand{gap:10px}
+#s8 .foot .brand .stamp{width:34px;height:34px;font-size:17px;border-radius:8px;box-shadow:none}
+#s8 .foot .brand .wm{font-size:14px;color:var(--cream)}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ============ SECTION 1 · HERO ============ -->
+<section class="frame dark" id="s1" data-s="1">
+  <div class="bg"><img src="https://images.pexels.com/photos/12455439/pexels-photo-12455439.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="noodle bowl"></div>
+  <div class="shade"></div>
+  <nav class="nav">
+    <div class="brand">
+      <div class="stamp">食</div>
+      <div>
+        <div class="wm">CITYU·EATS</div>
+        <div class="wm-sub">城大飯堂指南</div>
+      </div>
+    </div>
+    <div class="nav-links"><b>菜單</b><span>飯堂</span><span>本週十大</span><span>避雷牆</span><span>關於</span></div>
+    <button class="btn primary" style="padding:11px 24px;font-size:13.5px">＋ 寫食評</button>
+  </nav>
+  <div class="hero-body">
+    <div class="hero-kicker">CITY UNIVERSITY OF HONG KONG · 三大飯堂實試指南</div>
+    <h1 class="hero">今日食咩<span class="q">？</span></h1>
+    <p class="hero-sub">AC1 有官方 menu，AC2、AC3 冇？我哋幫你補齊 — 三個飯堂嘅菜品、價錢同評分一次睇晒，由同學實食話你知邊樣係好嘢、邊樣係地雷。</p>
+    <div class="hero-search">
+      <span class="ph">搜尋菜式或檔口，例如：叉燒飯、三文魚丼、奶茶</span>
+      <span class="go">搜尋</span>
+    </div>
+    <div class="hero-chips">
+      <span class="chip on">全部飯堂</span><span class="chip">AC1</span><span class="chip">AC2</span><span class="chip">AC3</span>
+      <span class="chip hot">⚡ 本週十大</span><span class="chip">必食清單</span>
+    </div>
+  </div>
+  <div class="hero-live"><span class="dot"></span>而家 12:40 · AC1 人流：高</div>
+</section>
+
+<!-- ============ SECTION 2 · 三大飯堂 ============ -->
+<section class="frame" id="s2" data-s="2">
+  <div class="pad">
+    <div class="head-row">
+      <div>
+        <div class="kicker"><span class="n">01</span> CHOOSE YOUR CANTEEN</div>
+        <h2 class="sec">三個飯堂，一次睇晒</h2>
+      </div>
+      <p class="sec-note" style="max-width:300px;text-align:right">開放狀態同人流資料由同學回報，<br>每 15 分鐘更新一次。</p>
+    </div>
+    <div class="canteen-grid">
+      <div class="ccard">
+        <div class="ph">
+          <img src="https://images.pexels.com/photos/39378154/pexels-photo-39378154.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="AC1">
+          <span class="status"><span class="dot"></span>營業中 · 至 21:00</span>
+          <span class="rank">官方 MENU 已同步</span>
+        </div>
+        <div class="bd">
+          <div class="name"><h3>AC1</h3><span>學術樓（一）3/F · 主力飯堂</span></div>
+          <div class="meta">
+            <div><b>18</b>檔口</div>
+            <div><b>4.1</b>平均評分</div>
+            <div><b>128</b>今日菜品</div>
+          </div>
+          <div class="today">今日精選 · <em>燒鴨瀨粉</em> 同學實試 4.8 ★</div>
+          <div class="foot">
+            <div class="crowd"><i class="f1"></i><i class="f2"></i><i class="f3"></i><span class="crowd-label">人流：高</span></div>
+            <span class="chip">睇菜單 →</span>
+          </div>
+        </div>
+      </div>
+      <div class="ccard">
+        <div class="ph">
+          <img src="https://images.pexels.com/photos/13065914/pexels-photo-13065914.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="AC2">
+          <span class="status"><span class="dot amber"></span>營業中 · 至 20:00</span>
+        </div>
+        <div class="bd">
+          <div class="name"><h3>AC2</h3><span>學術樓（二）· 近圖書館</span></div>
+          <div class="meta">
+            <div><b>8</b>檔口</div>
+            <div><b>4.0</b>平均評分</div>
+          </div>
+          <div class="today">今日精選 · <em>三文魚丼</em> 中午限定</div>
+          <div class="foot">
+            <div class="crowd"><i class="f1"></i><i class="f2"></i><span class="crowd-label">人流：中等</span></div>
+            <span class="chip">睇菜單 →</span>
+          </div>
+        </div>
+      </div>
+      <div class="ccard">
+        <div class="ph">
+          <img src="https://images.pexels.com/photos/6368746/pexels-photo-6368746.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="AC3">
+          <span class="status"><span class="dot"></span>營業中 · 至 19:00</span>
+        </div>
+        <div class="bd">
+          <div class="name"><h3>AC3</h3><span>康樂樓 · 近宿舍</span></div>
+          <div class="meta">
+            <div><b>6</b>檔口</div>
+            <div><b>4.2</b>平均評分</div>
+          </div>
+          <div class="today">今日精選 · <em>韓式炸雞</em> 週五隱藏菜單</div>
+          <div class="foot">
+            <div class="crowd"><i class="f1"></i><span class="crowd-label">人流：低</span></div>
+            <span class="chip">睇菜單 →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="s2-legend">
+      <span>● 營業中　● 即將開鑼　● 已收爐　｜　人流由同學排隊時間回報計算</span>
+      <span>想幫手補充 AC2／AC3 資料？成為編輯 →</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 · 菜單瀏覽 ============ -->
+<section class="frame" id="s3" data-s="3">
+  <div class="pad">
+    <div class="kicker"><span class="n">02</span> BROWSE THE MENU</div>
+    <h2 class="sec">由菜色搵，定由飯堂搵？</h2>
+    <div class="browse">
+      <aside class="rail">
+        <div>
+          <h4>飯堂</h4>
+          <div class="chips"><span class="chip on">全部</span><span class="chip">AC1</span><span class="chip">AC2</span><span class="chip">AC3</span></div>
+        </div>
+        <div>
+          <h4>菜色</h4>
+          <div class="chips">
+            <span class="chip on">全部</span><span class="chip">燒味</span><span class="chip">粉麵</span><span class="chip">中式小炒</span>
+            <span class="chip">日式</span><span class="chip">韓式</span><span class="chip">東南亞</span><span class="chip">西式</span>
+            <span class="chip">素食</span><span class="chip">飲品甜品</span>
+          </div>
+        </div>
+        <div>
+          <h4>價位</h4>
+          <div class="chips"><span class="chip">HK$20 以下</span><span class="chip on">$20–35</span><span class="chip">$35+</span></div>
+        </div>
+        <div class="sort"><span>排序：評分最高</span><span>▾</span></div>
+      </aside>
+      <div class="dish-grid">
+        <div class="dcard">
+          <div class="ph"><img src="https://images.pexels.com/photos/33013652/pexels-photo-33013652.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="叉燒雙蛋飯"><span class="tag">必食</span><span class="fav">♡</span></div>
+          <div class="bd">
+            <div class="r1"><h3>叉燒雙蛋飯</h3><span class="code">AC1-07</span></div>
+            <div class="stall">榮華燒臘 · AC1</div>
+            <div class="r3"><span class="score"><span class="star">★★★★★</span><b>4.6</b> (128)</span><span class="price"><small>HK$</small>34</span></div>
+            <div class="r4"><span class="thumb-up">👍 96</span><span class="bolt">⚡ 5</span></div>
+          </div>
+        </div>
+        <div class="dcard">
+          <div class="ph"><img src="https://images.pexels.com/photos/19811260/pexels-photo-19811260.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="燒鴨瀨粉"><span class="tag">本週第一</span><span class="fav">♡</span></div>
+          <div class="bd">
+            <div class="r1"><h3>燒鴨瀨粉</h3><span class="code">AC1-12</span></div>
+            <div class="stall">好記粉麵 · AC1</div>
+            <div class="r3"><span class="score"><span class="star">★★★★★</span><b>4.8</b> (203)</span><span class="price"><small>HK$</small>38</span></div>
+            <div class="r4"><span class="thumb-up">👍 171</span><span class="bolt">⚡ 2</span></div>
+          </div>
+        </div>
+        <div class="dcard">
+          <div class="ph"><img src="https://images.pexels.com/photos/7531245/pexels-photo-7531245.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="三文魚丼"><span class="fav">♡</span></div>
+          <div class="bd">
+            <div class="r1"><h3>三文魚丼</h3><span class="code">AC2-03</span></div>
+            <div class="stall">千歲食堂 · AC2 · 中午限定</div>
+            <div class="r3"><span class="score"><span class="star">★★★★☆</span><b>4.5</b> (87)</span><span class="price"><small>HK$</small>45</span></div>
+            <div class="r4"><span class="thumb-up">👍 64</span><span class="bolt">⚡ 6</span></div>
+          </div>
+        </div>
+        <div class="dcard">
+          <div class="ph"><img src="https://images.pexels.com/photos/5774006/pexels-photo-5774006.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="韓式炸雞"><span class="tag j">隱藏食法</span><span class="fav">♡</span></div>
+          <div class="bd">
+            <div class="r1"><h3>韓式炸雞</h3><span class="code">AC3-02</span></div>
+            <div class="stall">首爾廚房 · AC3</div>
+            <div class="r3"><span class="score"><span class="star">★★★★☆</span><b>4.7</b> (95)</span><span class="price"><small>HK$</small>42</span></div>
+            <div class="r4"><span class="thumb-up">👍 78</span><span class="bolt">⚡ 4</span></div>
+          </div>
+        </div>
+        <div class="dcard">
+          <div class="ph"><img src="https://images.pexels.com/photos/17593648/pexels-photo-17593648.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="咖喱豬排飯"><span class="fav">♡</span></div>
+          <div class="bd">
+            <div class="r1"><h3>日式咖喱豬排飯</h3><span class="code">AC2-06</span></div>
+            <div class="stall">千歲食堂 · AC2</div>
+            <div class="r3"><span class="score"><span class="star">★★★★☆</span><b>4.4</b> (61)</span><span class="price"><small>HK$</small>40</span></div>
+            <div class="r4"><span class="thumb-up">👍 43</span><span class="bolt">⚡ 7</span></div>
+          </div>
+        </div>
+        <div class="dcard">
+          <div class="ph"><img src="https://images.pexels.com/photos/12666754/pexels-photo-12666754.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="絲襪奶茶"><span class="tag j">平靚正</span><span class="fav">♡</span></div>
+          <div class="bd">
+            <div class="r1"><h3>絲襪奶茶</h3><span class="code">AC1-18</span></div>
+            <div class="stall">茶水亭 · AC1</div>
+            <div class="r3"><span class="score"><span class="star">★★★★☆</span><b>4.3</b> (140)</span><span class="price"><small>HK$</small>9</span></div>
+            <div class="r4"><span class="thumb-up">👍 102</span><span class="bolt">⚡ 9</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 · 菜品詳情 + 評論 ============ -->
+<section class="frame" id="s4" data-s="4">
+  <div class="pad">
+    <div class="detail">
+      <div class="photo-stack">
+        <div class="main"><img src="https://images.pexels.com/photos/6645928/pexels-photo-6645928.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="燒鴨"></div>
+        <div class="inset"><img src="https://images.pexels.com/photos/4224214/pexels-photo-4224214.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="瀨粉"></div>
+      </div>
+      <div class="dinfo">
+        <div class="code-row"><span class="code">NO. AC1-12</span><span class="chip">燒味</span><span class="chip">粉麵</span></div>
+        <h2>燒鴨瀨粉</h2>
+        <div class="sub">好記粉麵 · AC1 學術樓（一）3/F · HK$38</div>
+        <div class="score-row">
+          <span class="big">4.8</span>
+          <div>
+            <div class="star">★★★★★</div>
+            <div class="of">203 則同學評論</div>
+          </div>
+          <span class="rankchip">🏆 本週排行 #1</span>
+        </div>
+        <div class="bars">
+          <div class="bar-row"><span>5★</span><div class="track"><div class="fill" style="width:78%"></div></div><span>78%</span></div>
+          <div class="bar-row"><span>4★</span><div class="track"><div class="fill a" style="width:15%"></div></div><span>15%</span></div>
+          <div class="bar-row"><span>3★</span><div class="track"><div class="fill a" style="width:5%"></div></div><span>5%</span></div>
+          <div class="bar-row"><span>2★</span><div class="track"><div class="fill a" style="width:1%"></div></div><span>1%</span></div>
+          <div class="bar-row"><span>1★</span><div class="track"><div class="fill a" style="width:1%"></div></div><span>1%</span></div>
+        </div>
+        <div class="reviews">
+          <div class="review">
+            <p>「皮脆肉嫩，瀨粉掛湯一流，HK$38 冇得輸。叫多句『要髀位』仲有驚喜。」</p>
+            <div class="who"><b>Kelvin L.</b> · 2 日前 · <span class="thumb-up">👍 24</span></div>
+          </div>
+          <div class="review">
+            <p>「12:15 之後要排 15 分鐘，建議 12 點前落樓，或者 14:00 之後先去，湯底仲熱。」</p>
+            <div class="who"><b>Mandy</b> · 5 日前 · <span class="thumb-up">👍 17</span></div>
+          </div>
+          <div class="review bad">
+            <p>「星期五下晝湯底明顯淡咗，趕時間嗰陣唔好試，落單前問句先。」</p>
+            <div class="who"><b>匿名同學</b> · 1 週前 · <span class="bolt">⚡ 8</span></div>
+          </div>
+        </div>
+        <div class="cta-row">
+          <button class="btn primary">✍️ 寫食評</button>
+          <button class="btn ghost">♡ 收藏此菜</button>
+          <span class="save">檢舉不實資訊</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 · 推薦/避雷牆 ============ -->
+<section class="frame" id="s5" data-s="5">
+  <div class="texture"></div>
+  <div class="pad" style="position:relative">
+    <div class="kicker"><span class="n">03</span> REAL TALK FROM CLASSMATES</div>
+    <h2 class="sec">食完開心，定係喊住返堂？</h2>
+    <p class="sec-note" style="margin-top:12px">讚與踩都歡迎 — 每一句都係畀下一個餓住嘅同學嘅交代。</p>
+    <div class="wall">
+      <div class="wall-col good">
+        <h3>👍 今日正<span class="cnt">RECOMMEND · 1,208</span></h3>
+        <div class="wcard">
+          <span class="badge">正</span>
+          <p>「AC3 韓式炸雞醬汁辣得嚟有返少少甜，叫少飯加炒年糕先係隱藏食法，兩個人開一碟最抵。」</p>
+          <div class="meta"><span class="who"><b>Winnie</b> · 3 日前</span><span class="code">AC3-02</span><span class="score star">★★★★★ <b style="color:var(--ink)">4.8</b></span></div>
+        </div>
+        <div class="wcard">
+          <span class="badge">正</span>
+          <p>「AC2 三文魚丼平過出面壽司店成 HK$20，魚生仲新鮮，中午限定記得 12 點前到。」</p>
+          <div class="meta"><span class="who"><b>Jason</b> · 6 日前</span><span class="code">AC2-03</span><span class="score star">★★★★★ <b style="color:var(--ink)">4.6</b></span></div>
+        </div>
+        <div class="wcard">
+          <span class="badge">正</span>
+          <p>「AC1 茶水亭絲襪奶茶 HK$9，茶味重唔會漏（太甜），考試週續命之選。」</p>
+          <div class="meta"><span class="who"><b>小 C</b> · 1 週前</span><span class="code">AC1-18</span><span class="score star">★★★★☆ <b style="color:var(--ink)">4.5</b></span></div>
+        </div>
+      </div>
+      <div class="wall-col avoid">
+        <h3>⚡ 小心地雷<span class="cnt">AVOID · 317</span></h3>
+        <div class="wcard">
+          <span class="badge">雷</span>
+          <p>「AC1 某西式檔吞拿魚三文治，得兩塊麵包夾一塊生菜，HK$28 認真貴，唔建議。」</p>
+          <div class="meta"><span class="who"><b>匿名</b> · 昨日</span><span class="code">AC1-15</span><span class="score star">★☆☆☆☆ <b style="color:var(--ink)">1.8</b></span></div>
+        </div>
+        <div class="wcard">
+          <span class="badge">雷</span>
+          <p>「AC2 日式檔出餐超慢，12:45 落單等到 13:10，下午 2 點堂嗰次差啲遲到。」</p>
+          <div class="meta"><span class="who"><b>Raymond</b> · 4 日前</span><span class="code">AC2-06</span><span class="score star">★★☆☆☆ <b style="color:var(--ink)">2.4</b></span></div>
+        </div>
+        <div class="wcard">
+          <span class="badge">雷</span>
+          <p>「AC3 珍珠奶茶啲珍珠硬心，仲要叫少甜係完全冇味，建議照叫正常甜度或者索性叫檸檬茶。」</p>
+          <div class="meta"><span class="who"><b>Amy</b> · 1 週前</span><span class="code">AC3-05</span><span class="score star">★★☆☆☆ <b style="color:var(--ink)">2.1</b></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="s5-cta"><a href="#">你有嘢想講？兩分鐘寫低你嘅食評 →</a></div>
+  </div>
+</section>
+
+<!-- ============ SECTION 6 · 本週十大 (dark) ============ -->
+<section class="frame dark" id="s6" data-s="6">
+  <div class="pad">
+    <div class="head-row">
+      <div>
+        <div class="kicker"><span class="n">04</span> WEEKLY TOP 10</div>
+        <h2 class="sec">本週全城大最搶手</h2>
+      </div>
+      <p class="sec-note" style="color:var(--cream-soft);max-width:300px;text-align:right">以 7 日內評論數量 × 平均評分計算，<br>逢星期一 00:00 重置。</p>
+    </div>
+    <div class="rank-list">
+      <div class="rank-row top">
+        <span class="num">01</span>
+        <div class="thumb"><img src="https://images.pexels.com/photos/19811260/pexels-photo-19811260.jpeg?auto=compress&cs=tinysrgb&w=800" alt=""></div>
+        <div class="dish"><h3>燒鴨瀨粉</h3><span>好記粉麵 · AC1</span></div>
+        <div class="votes"><b>203</b>則評論 · 本週 +38</div>
+        <div class="rt"><b>4.8</b><span class="star">★★★★★</span></div>
+      </div>
+      <div class="rank-row">
+        <span class="num">02</span>
+        <div class="thumb"><img src="https://images.pexels.com/photos/5774006/pexels-photo-5774006.jpeg?auto=compress&cs=tinysrgb&w=800" alt=""></div>
+        <div class="dish"><h3>韓式炸雞</h3><span>首爾廚房 · AC3</span></div>
+        <div class="votes"><b>95</b>則評論 · 本週 +27</div>
+        <div class="rt"><b>4.7</b><span class="star">★★★★★</span></div>
+      </div>
+      <div class="rank-row">
+        <span class="num">03</span>
+        <div class="thumb"><img src="https://images.pexels.com/photos/7531245/pexels-photo-7531245.jpeg?auto=compress&cs=tinysrgb&w=800" alt=""></div>
+        <div class="dish"><h3>三文魚丼</h3><span>千歲食堂 · AC2</span></div>
+        <div class="votes"><b>87</b>則評論 · 本週 +12</div>
+        <div class="rt"><b>4.5</b><span class="star">★★★★☆</span></div>
+      </div>
+      <div class="rank-row">
+        <span class="num">04</span>
+        <div class="thumb"><img src="https://images.pexels.com/photos/33013652/pexels-photo-33013652.jpeg?auto=compress&cs=tinysrgb&w=800" alt=""></div>
+        <div class="dish"><h3>叉燒雙蛋飯</h3><span>榮華燒臘 · AC1</span></div>
+        <div class="votes"><b>128</b>則評論 · 本週 +9</div>
+        <div class="rt"><b>4.6</b><span class="star">★★★★☆</span></div>
+      </div>
+      <div class="rank-row">
+        <span class="num">05</span>
+        <div class="thumb"><img src="https://images.pexels.com/photos/12188535/pexels-photo-12188535.jpeg?auto=compress&cs=tinysrgb&w=800" alt=""></div>
+        <div class="dish"><h3>泰式海鮮炒河</h3><span>曼谷小廚 · AC2</span></div>
+        <div class="votes"><b>76</b>則評論 · 本週 +6</div>
+        <div class="rt"><b>4.4</b><span class="star">★★★★☆</span></div>
+      </div>
+    </div>
+    <div class="s6-note"><span>資料截至 10 月 2 日 12:00</span><span>睇晒 Top 10 →</span></div>
+  </div>
+</section>
+
+<!-- ============ SECTION 7 · 實用資訊 ============ -->
+<section class="frame" id="s7" data-s="7">
+  <div class="pad">
+    <div class="kicker"><span class="n">05</span> PLAN YOUR BREAK</div>
+    <h2 class="sec">幾點去，唔使排</h2>
+    <div class="info-grid">
+      <div class="icell">
+        <h4>OPENING HOURS</h4>
+        <h5>開放時間 × 高峰時段</h5>
+        <div class="trow">
+          <div class="t-head"><b>AC1</b><span>07:30 – 21:00</span></div>
+          <div class="track2"><div class="open" style="left:3.6%;width:96.4%"></div><div class="peak"></div></div>
+        </div>
+        <div class="trow">
+          <div class="t-head"><b>AC2</b><span>08:00 – 20:00</span></div>
+          <div class="track2"><div class="open" style="left:7.1%;width:85.8%"></div><div class="peak"></div></div>
+        </div>
+        <div class="trow">
+          <div class="t-head"><b>AC3</b><span>11:00 – 19:00</span></div>
+          <div class="track2"><div class="open" style="left:28.6%;width:57.1%"></div><div class="peak"></div></div>
+        </div>
+        <div class="t-scale"><span>07:00</span><span>10:00</span><span>13:00</span><span>16:00</span><span>19:00</span><span>21:00</span></div>
+        <div class="peak-legend">
+          <span><i style="background:var(--jade);opacity:.85"></i>營業時間</span>
+          <span><i style="background:var(--vermilion)"></i>午市高峰 11:30–13:30</span>
+        </div>
+      </div>
+      <div class="icell">
+        <h4>LIVE NOW</h4>
+        <h5>而家人流</h5>
+        <div class="nowrow"><b>AC1</b><span class="dot verm"></span><span class="lvl r">高峰 · 平均排 12 分鐘</span></div>
+        <div class="nowrow"><b>AC2</b><span class="dot amber"></span><span class="lvl a">中等 · 5 分鐘</span></div>
+        <div class="nowrow"><b>AC3</b><span class="dot"></span><span class="lvl g">通閒 · 即叫即食</span></div>
+        <div class="next-peak"><span class="dot verm"></span><span style="white-space:nowrap">下一個尖峰 <b>12:30</b> · 12:15 前落樓</span></div>
+      </div>
+      <div class="icell">
+        <h4>TIPS</h4>
+        <h5>學長新生貼士</h5>
+        <div class="tips">
+          <div class="tip"><span class="no">01</span><span><b>早 15 分鐘慳成堂時間</b> — 尖峰 11:45–13:15，12:00 前入座最快。</span></div>
+          <div class="tip"><span class="no">02</span><span><b>帶水樽</b> — AC2 近窗邊有水機，AC1 要去 5 樓。</span></div>
+          <div class="tip"><span class="no">03</span><span><b>留意週五</b> — AC3 部分檔口會提前收爐，出發前睇埋標籤。</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 8 · FOOTER CTA ============ -->
+<section class="frame dark" id="s8" data-s="8">
+  <div class="inner">
+    <div class="stamp">食</div>
+    <h2>食咗好嘢，<br>記得話人知<span class="q">。</span></h2>
+    <p class="sub">兩分鐘寫低你嘅食評，幫下一個餓住嘅同學慳返餐飯錢 — 好嘢同地雷，一句都夠。</p>
+    <div class="cta-row">
+      <button class="btn primary">✍️ 寫我嘅第一條食評</button>
+      <button class="btn ghost">先去睇菜單</button>
+    </div>
+  </div>
+  <div class="foot">
+    <div class="brand">
+      <div class="stamp">食</div>
+      <div class="wm" style="font-family:var(--latin);font-weight:800;letter-spacing:.08em">CITYU·EATS</div>
+    </div>
+    <div class="links"><span>三個飯堂</span><span>菜單</span><span>本週十大</span><span>避雷牆</span><span>成為編輯</span><span>聯絡我哋</span></div>
+    <span>由 CityU 學生自發維護 · 非官方網站 · © 2026</span>
+  </div>
+</section>
+
+</div>
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const s = params.get("s");
+  if (s) {
+    document.body.classList.add("solo");
+    document.querySelectorAll(".frame").forEach(f => {
+      f.classList.toggle("on", f.dataset.s === s);
+    });
+  }
+})();
+</script>
+</body>
+</html>
