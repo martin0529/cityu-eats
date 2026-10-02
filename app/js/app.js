@@ -108,6 +108,11 @@
     return I18N.lang() === 'zh' ? `${n}則評論` : (n === 1 ? `${n} review` : `${n} reviews`);
   }
 
+  function tagLabel(tag) {
+    const known = { signature: 'tagSignature', spicy: 'tagSpicy', value: 'tagValue', sweet: 'tagSweet' };
+    return known[tag] ? I18N.t(known[tag]) : tag;
+  }
+
   function starsSvg(avg) {
     const pct = Math.max(0, Math.min(100, (avg / 5) * 100));
     const row = (cls) =>
@@ -365,7 +370,9 @@
               <p class="canteen-hours">${icon('clock')}${esc(I18N.lang() === 'zh' ? c.hoursZh : c.hoursEn)}</p>
               ${c.orderUrl ? `<a class="order-link" href="${esc(c.orderUrl)}" target="_blank" rel="noopener">${esc(I18N.t('officialOrdering'))}${icon('ext')}</a>` : ''}
             </div>
-            <figure class="canteen-band-photo"><img src="${esc(c.photo)}" alt="${esc(I18N.lang() === 'zh' ? c.zh : c.en)}"></figure>
+            ${(c.photo || '')
+              ? `<figure class="canteen-band-photo"><img src="${esc(c.photo)}" alt="${esc(I18N.lang() === 'zh' ? c.zh : c.en)}"></figure>`
+              : `<div class="canteen-band-photo canteen-band-photo-ph"><span>${esc(c.short)}</span></div>`}
           </div>
         </div>
       </section>
@@ -399,7 +406,7 @@
           <div class="footer-links">
             <a href="https://www.cityu.edu.hk/zh-hk/directories/catering" target="_blank" rel="noopener">${esc(I18N.t('footerOfficial'))}${icon('ext')}</a>
             <button class="linklike" data-action="toggle-samples">${esc(I18N.t(samplesHidden ? 'footerSamplesShown' : 'footerSamplesHidden'))}</button>
-            <span class="footer-storage">${esc(I18N.t(store.remoteAvailable() ? 'footerStorageCloud' : 'footerStorageLocal'))}</span>
+            <span class="footer-storage">v${esc(window.CITYU_EATS_CONFIG.VERSION || '')} · ${esc(I18N.t(store.remoteAvailable() ? 'footerStorageCloud' : 'footerStorageLocal'))}</span>
           </div>
         </div>
       </footer>`;
@@ -451,6 +458,7 @@
             <h2 class="dish-modal-name">${esc(I18N.pick(d))}</h2>
             <p class="dish-modal-en">${esc(I18N.lang() === 'zh' ? d.en : d.zh)}</p>
             ${(d.descZh || d.descEn) ? `<p class="dish-modal-desc">${esc(I18N.lang() === 'zh' ? (d.descZh || d.descEn) : (d.descEn || d.descZh))}</p>` : ''}
+            ${(d.tags && d.tags.length) ? `<div class="dish-modal-tags">${d.tags.map((t) => `<span class="tag-chip tag-${esc(t)}">${esc(tagLabel(t))}</span>`).join('')}</div>` : ''}
             ${s.count ? `
             <div class="dish-modal-rating">
               <b class="avg">${s.avg.toFixed(1)}</b>
@@ -797,6 +805,9 @@
 
   async function boot() {
     renderHeader();
+    if (window.CityuEatsMenu) {
+      try { await window.CityuEatsMenu.load(); } catch (e) { /* 內建資料後備 */ }
+    }
     await loadReviews();
     render();
   }

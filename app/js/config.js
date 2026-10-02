@@ -6,6 +6,8 @@
  *   supabase-setup.sql，然後把下面 SUPABASE_URL 和 SUPABASE_ANON_KEY 填上。
  */
 window.CITYU_EATS_CONFIG = {
+  VERSION: '0.2.0',
+
   // Supabase project: Cityu canteen comment website (2026-10-02 連接)
   SUPABASE_URL: 'https://dymeaqrkvpqmocicpnsx.supabase.co',
   // anon / publishable key — 公開金鑰，安全性由 RLS 政策保障

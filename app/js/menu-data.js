@@ -135,3 +135,93 @@ window.CITYU_EATS_DATA = {
     { id: 's18', dishId: 'ac2-mapo-tofu', rating: 2, verdict: 'avoid', nickname: '無飯不歡', text: '自家煮都好過呢盒，豆腐碎晒又唔入味精。', created: '2026-09-27T12:25:00+08:00' },
   ],
 };
+
+/* ═══ 雲端菜單載入器 ═══
+ * 菜單現存放於 Supabase（canteens / dishes 表），改菜單去 dashboard → Table Editor，
+ * 網站重新整理即生效，毋須重新部署。
+ * 載入順序：雲端 → 本地快取 → 下面內建資料（三層後備，離線/斷網都不會白屏）。
+ * 執行 Supabase 菜單表的 SQL 在專案根目錄 supabase-menu.sql。
+ */
+(function () {
+  'use strict';
+  const CFG = window.CITYU_EATS_CONFIG;
+  const CACHE_KEY = 'cityu-eats:menu-cache:v1';
+
+  function apply(canteens, dishes) {
+    const D = window.CITYU_EATS_DATA;
+    D.canteens.length = 0;
+    D.canteens.push(...canteens);
+    D.dishes.length = 0;
+    D.dishes.push(...dishes);
+  }
+  function normalizeCanteen(r) {
+    return {
+      id: r.id, short: (r.id || '').toUpperCase(),
+      zh: r.zh || r.en || r.id, en: r.en || r.zh || r.id,
+      bldgZh: r.bldg_zh || '', bldgEn: r.bldg_en || '',
+      hoursZh: r.hours_zh || '', hoursEn: r.hours_en || '',
+      factZh: r.fact_zh || '', factEn: r.fact_en || '',
+      color: r.id, photo: r.photo || '', orderUrl: r.order_url || null,
+    };
+  }
+  function normalizeDish(r) {
+    return {
+      id: r.id, canteenId: r.canteen_id, cat: r.category,
+      zh: r.zh, en: r.en, price: Number(r.price),
+      photo: r.photo || '', descZh: r.desc_zh || '', descEn: r.desc_en || '',
+      tags: Array.isArray(r.tags) ? r.tags : [],
+    };
+  }
+  async function fetchCloud() {
+    if (!CFG.SUPABASE_URL || !CFG.SUPABASE_ANON_KEY) return null;
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), 5000);
+    const headers = { apikey: CFG.SUPABASE_ANON_KEY };
+    try {
+      const [cRes, dRes] = await Promise.all([
+        fetch(CFG.SUPABASE_URL + '/rest/v1/canteens?select=*&order=sort.asc', { headers, signal: ctl.signal }),
+        fetch(CFG.SUPABASE_URL + '/rest/v1/dishes?select=*&order=sort.asc', { headers, signal: ctl.signal }),
+      ]);
+      if (!cRes.ok || !dRes.ok) return null;
+      const cs = await cRes.json();
+      const ds = await dRes.json();
+      if (!Array.isArray(cs) || !Array.isArray(ds) || !cs.length || !ds.length) return null;
+      return {
+        canteens: cs.map(normalizeCanteen),
+        dishes: ds.filter((d) => d.available !== false).map(normalizeDish),
+      };
+    } catch (e) {
+      return null;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  window.CityuEatsMenu = {
+    source: 'bundled', // 'cloud' | 'cache' | 'bundled'
+    async load() {
+      const cloud = await fetchCloud();
+      if (cloud) {
+        apply(cloud.canteens, cloud.dishes);
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), canteens: cloud.canteens, dishes: cloud.dishes }));
+        } catch (e) { /* 儲存空間滿了就算 */ }
+        this.source = 'cloud';
+        return this.source;
+      }
+      try {
+        const raw = localStorage.getItem(CACHE_KEY);
+        if (raw) {
+          const c = JSON.parse(raw);
+          if (c && Array.isArray(c.dishes) && c.dishes.length && Array.isArray(c.canteens) && c.canteens.length) {
+            apply(c.canteens, c.dishes);
+            this.source = 'cache';
+            return this.source;
+          }
+        }
+      } catch (e) { /* 快取壞了就用內建 */ }
+      this.source = 'bundled';
+      return this.source;
+    },
+  };
+})();

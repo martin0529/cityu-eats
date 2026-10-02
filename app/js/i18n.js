@@ -109,6 +109,12 @@
     close: { zh: '關閉', en: 'Close' },
     starUnit: { zh: '星', en: 'star' },
     pricePrefix: { zh: '$', en: '$' },
+
+    /* 標籤 */
+    tagSignature: { zh: '招牌', en: 'SIGNATURE' },
+    tagSpicy: { zh: '辣', en: 'Spicy' },
+    tagValue: { zh: '抵食', en: 'Value' },
+    tagSweet: { zh: '甜', en: 'Sweet' },
   };
 
   let current = 'zh';
